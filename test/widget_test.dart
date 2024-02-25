@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:palestine_supporter/main.dart';
 import 'package:palestine_supporter/pages/mainPage.dart';
 
 void main() {
