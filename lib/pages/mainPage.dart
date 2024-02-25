@@ -35,7 +35,7 @@ class _mainPageState extends State<mainPage> {
         title: Text(
           mainTitle,
           style: TextStyle(
-            fontSize: fSize,
+            fontSize: fSize + 10,
             color: fColor,
           ),
         ),
