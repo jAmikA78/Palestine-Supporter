@@ -1,7 +1,10 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:palestine_supporter/const/constant.dart';
+import 'package:palestine_supporter/pages/setttings.dart';
 
 class mainPage extends StatefulWidget {
   const mainPage({super.key});
@@ -16,41 +19,62 @@ class _mainPageState extends State<mainPage> {
       ChatUser(id: '1', firstName: userFname, lastName: userLname);
   final ChatUser _bot =
       ChatUser(id: '2', firstName: 'Palestine', lastName: 'Bot');
-
-  List<ChatMessage> _messages = <ChatMessage>[];
+  ChatMessage firstMessage = ChatMessage(
+      user: ChatUser(id: '2', firstName: 'Palestine', lastName: 'Bot'),
+      createdAt: DateTime.now(),
+      text: firstMessageText);
 
   @override
   Widget build(BuildContext context) {
+    (messages.length == 0) ? messages.insert(0, firstMessage) : fColor = fColor;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: fbgColor,
-        title: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              fontFamily: font,
-              fontSize: fSize,
-              color: fColor,
-            ),
+        title: Text(
+          title,
+          style: TextStyle(
+            fontFamily: font,
+            fontSize: fSize,
+            color: fColor,
           ),
         ),
+        centerTitle: true,
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => settingPage()));
+              },
+              child: const Icon(Icons.settings))
+        ],
       ),
-      body: DashChat(
-        currentUser: _user,
-        onSend: (ChatMessage m) async {
-          var temp = await getRedponse(m);
-          setState(() {
-            _messages.insert(0, m);
-            _messages.insert(0, temp);
-            Clipboard.setData(ClipboardData(text: temp.text));
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('تم نسخ الرسالة'),
-              ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(bgPath),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: DashChat(
+          currentUser: _user,
+          onSend: (ChatMessage m) async {
+            var temp = await getRedponse(m);
+            setState(
+              () {
+                messages.insert(0, m);
+                messages.insert(0, temp);
+                Clipboard.setData(ClipboardData(text: temp.text));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(copyMessageString),
+                  duration: const Duration(seconds: 1),
+                ));
+              },
             );
-          });
-        },
-        messages: _messages,
+          },
+          messages: messages,
+        ),
       ),
     );
   }
@@ -63,21 +87,35 @@ class _mainPageState extends State<mainPage> {
       if (c == 'أ' || c == 'إ' || c == 'آ')
         c = 'ا';
       else if (c == 'ب')
-        c = 'ٮ';
+        c = 'پ';
       else if (c == 'ت')
         c = 'ٺ';
       else if (c == 'ث')
         c = 'ٽ';
+      else if (c == 'ج')
+        c = 'چ';
+      else if (c == 'ر')
+        c = 'ڕ';
+      else if (c == 'ز')
+        c = 'ژ';
       else if (c == 'س')
         c = 'ښ';
       else if (c == 'ف')
         c = 'ڡ';
+      else if (c == 'ق')
+        c = 'ڤ';
       else if (c == 'ك')
         c = 'ڪ';
+      else if (c == 'ل')
+        c = 'ڵ';
       else if (c == 'ن')
         c = 'ڼ';
-      else if (c == 'ي') c = 'ى';
-
+      else if (c == 'و')
+        c = 'ۆ';
+      else if (c == 'ي')
+        c = 'ى';
+      else
+        c = c;
       temp += c;
     }
     return ChatMessage(
