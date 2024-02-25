@@ -8,7 +8,7 @@ String userLname = 'Ibrahim';
 
 double fSize = 18;
 
-Color fColor = Colors.blueGrey.shade900;
+Color fColor = Colors.white;
 Color fbgColor = Colors.blueGrey.shade500;
 Color fbgColor2 = Colors.blueGrey.shade400;
 Color tColor = Colors.blueGrey.shade700;

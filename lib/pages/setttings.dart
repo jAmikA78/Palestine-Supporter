@@ -64,7 +64,7 @@ class _settingPageState extends State<settingPage> {
                       } else {
                         viewMode = "الرؤية الليلية";
                       }
-                      fColor = Colors.blueGrey.shade900;
+                      fColor = Colors.black;
                       fbgColor = Colors.blueGrey.shade500;
                       fbgColor2 = Colors.blueGrey.shade400;
                       tColor = Colors.blueGrey.shade700;
@@ -77,7 +77,8 @@ class _settingPageState extends State<settingPage> {
                       } else {
                         viewMode = "الوضع النهارى";
                       }
-                      fColor = Colors.blueGrey.shade100;
+                      fColor = Colors.white;
+
                       fbgColor = Colors.black87;
                       fbgColor2 = Colors.black87;
                       tColor = Colors.blueGrey.shade300;
