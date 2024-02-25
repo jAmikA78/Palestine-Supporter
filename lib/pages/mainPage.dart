@@ -75,6 +75,24 @@ class _mainPageState extends State<mainPage> {
             );
           },
           messages: messages,
+          messageOptions: MessageOptions(
+            currentUserContainerColor: fbgColor,
+            containerColor: fbgColor2,
+            textColor: fColor,
+            messageTextBuilder: (message, previousMessage, nextMessage) => Text(
+              message.text,
+              style: TextStyle(fontSize: fSize),
+            ),
+            onLongPressMessage: (ChatMessage message) {
+              Clipboard.setData(ClipboardData(text: message.text));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(copyMessageString),
+                  duration: const Duration(seconds: 1),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

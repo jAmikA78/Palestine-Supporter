@@ -31,7 +31,7 @@ class _settingPageState extends State<settingPage> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Column(
+          child: ListView(
             children: [
               const SizedBox(height: 30),
               ElevatedButton(
@@ -64,9 +64,9 @@ class _settingPageState extends State<settingPage> {
                       } else {
                         viewMode = "الرؤية الليلية";
                       }
-                      fColor = Colors.blueGrey.shade700;
-                      fbgColor = Colors.blueGrey.shade100;
-                      fbgColor2 = Colors.blueGrey.shade200;
+                      fColor = Colors.blueGrey.shade900;
+                      fbgColor = Colors.blueGrey.shade500;
+                      fbgColor2 = Colors.blueGrey.shade400;
                       tColor = Colors.blueGrey.shade700;
                       tbgColor = Colors.blueGrey.shade100;
                       bbgColor = Colors.blueGrey.shade300;
@@ -78,8 +78,8 @@ class _settingPageState extends State<settingPage> {
                         viewMode = "الوضع النهارى";
                       }
                       fColor = Colors.blueGrey.shade100;
-                      fbgColor = Colors.black54;
-                      fbgColor2 = Colors.black38;
+                      fbgColor = Colors.black87;
+                      fbgColor2 = Colors.black87;
                       tColor = Colors.blueGrey.shade300;
                       tbgColor = Colors.black45;
                       bbgColor = Colors.black87;
@@ -121,6 +121,7 @@ class _settingPageState extends State<settingPage> {
                       lang = "English";
                       saveTitle = "حفظ";
                       copyMessageString = "تم نسخ النص";
+                      fontSize = "حجم الخط";
                     } else {
                       messages.clear();
                       mainTitle = "Free Palestine";
@@ -141,6 +142,7 @@ Leave your message or post and leave the rest to us
                       lang = "العربية";
                       saveTitle = "Save";
                       copyMessageString = "Text copied";
+                      fontSize = "Font Size";
                     }
                   });
                 },
@@ -155,6 +157,36 @@ Leave your message or post and leave the rest to us
                   ),
                 ),
               ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(bbgColor),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    fontSize,
+                    style: TextStyle(
+                      fontSize: fSize,
+                      color: fColor,
+                    ),
+                  )),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    if (fSize <= 80) fSize += 2;
+                  });
+                },
+                child: const Icon(Icons.plus_one),
+              ),
+              const SizedBox(height: 30),
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      if (fSize >= 12) fSize -= 2;
+                    });
+                  },
+                  child: const Icon(Icons.exposure_minus_1))
             ],
           )),
       bottomNavigationBar: GestureDetector(

@@ -6,11 +6,11 @@ String mainTitle = "فلسطين حرة";
 String userFname = 'Ahmed';
 String userLname = 'Ibrahim';
 
-double fSize = 35;
+double fSize = 18;
 
-Color fColor = Colors.blueGrey.shade700;
-Color fbgColor = Colors.blueGrey.shade100;
-Color fbgColor2 = Colors.blueGrey.shade200;
+Color fColor = Colors.blueGrey.shade900;
+Color fbgColor = Colors.blueGrey.shade500;
+Color fbgColor2 = Colors.blueGrey.shade400;
 Color tColor = Colors.blueGrey.shade700;
 Color tbgColor = Colors.blueGrey.shade100;
 Color bbgColor = Colors.blueGrey.shade300;
@@ -29,5 +29,6 @@ String clearMassegesDone = "تم مسح السجل";
 String lang = "English";
 String saveTitle = "حفظ";
 String copyMessageString = "تم نسخ النص";
+String fontSize = "حجم الخط";
 
 List<ChatMessage> messages = <ChatMessage>[];
